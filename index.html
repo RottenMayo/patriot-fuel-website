@@ -1,0 +1,916 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Patriot Fuel Industrial Supply Co.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;500;600&family=Barlow+Condensed:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --navy: #0a1628;
+    --navy-mid: #0f2040;
+    --navy-light: #1a3558;
+    --steel: #2e4a6a;
+    --red: #b82025;
+    --red-dark: #8c1518;
+    --gold: #c9a84c;
+    --gold-light: #e8c870;
+    --white: #f4f2ed;
+    --gray: #9aabbb;
+    --light-gray: #d0d8e0;
+    --font-display: 'Bebas Neue', sans-serif;
+    --font-condensed: 'Barlow Condensed', sans-serif;
+    --font-body: 'Barlow', sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--navy);
+    color: var(--white);
+    font-family: var(--font-body);
+    font-weight: 400;
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 3rem;
+    height: 68px;
+    background: rgba(10,22,40,0.94);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgba(201,168,76,0.18);
+  }
+
+  .nav-logo {
+    font-family: var(--font-condensed);
+    font-weight: 700;
+    font-size: 1.05rem;
+    letter-spacing: 0.12em;
+    color: var(--gold);
+    text-transform: uppercase;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-family: var(--font-condensed);
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--light-gray);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--gold); }
+
+  /* HERO */
+  #hero {
+    position: relative;
+    height: 100vh;
+    min-height: 640px;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background-image: url('https://images.unsplash.com/photo-1581094651181-35942459ef62?w=1600&q=80');
+    background-size: cover;
+    background-position: center 40%;
+    filter: brightness(0.28) saturate(0.5);
+  }
+
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to right, rgba(10,22,40,0.94) 50%, rgba(10,22,40,0.25) 100%);
+  }
+
+  .hero-stripe {
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 6px;
+    background: var(--red);
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    padding: 0 4rem 0 5rem;
+    max-width: 700px;
+  }
+
+  .hero-eyebrow {
+    font-family: var(--font-condensed);
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.2rem;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+  }
+
+  .hero-eyebrow::before {
+    content: '';
+    display: block;
+    width: 32px;
+    height: 2px;
+    background: var(--red);
+  }
+
+  .hero-title {
+    font-family: var(--font-display);
+    font-size: clamp(3.8rem, 7vw, 6.2rem);
+    line-height: 0.95;
+    letter-spacing: 0.02em;
+    color: var(--white);
+    margin-bottom: 0.4rem;
+  }
+
+  .hero-title .accent { color: var(--red); }
+
+  .hero-subtitle {
+    font-family: var(--font-display);
+    font-size: clamp(1.4rem, 2.5vw, 2rem);
+    letter-spacing: 0.08em;
+    color: var(--gold);
+    margin-bottom: 1.8rem;
+  }
+
+  .hero-tagline {
+    font-size: 1.05rem;
+    font-weight: 300;
+    color: var(--light-gray);
+    line-height: 1.65;
+    margin-bottom: 2.4rem;
+    max-width: 480px;
+  }
+
+  .hero-tagline strong {
+    color: var(--white);
+    font-weight: 500;
+    display: block;
+    margin-bottom: 0.4rem;
+  }
+
+  .btn-primary {
+    display: inline-block;
+    font-family: var(--font-condensed);
+    font-size: 0.9rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--navy);
+    background: var(--gold);
+    padding: 0.9rem 2.2rem;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.15s;
+    clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px));
+  }
+
+  .btn-primary:hover {
+    background: var(--gold-light);
+    transform: translateY(-2px);
+  }
+
+  .hero-badges {
+    display: flex;
+    gap: 0.8rem;
+    margin-top: 2.4rem;
+    flex-wrap: wrap;
+  }
+
+  .badge {
+    font-family: var(--font-condensed);
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--gold);
+    border: 1px solid rgba(201,168,76,0.35);
+    padding: 0.3rem 0.75rem;
+  }
+
+  /* SECTION BASE */
+  section { padding: 5.5rem 0; }
+
+  .container {
+    max-width: 1160px;
+    margin: 0 auto;
+    padding: 0 3rem;
+  }
+
+  .section-label {
+    font-family: var(--font-condensed);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 0.6rem;
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+  }
+
+  .section-label::before {
+    content: '';
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: var(--red);
+  }
+
+  .section-title {
+    font-family: var(--font-display);
+    font-size: clamp(2.4rem, 4vw, 3.4rem);
+    letter-spacing: 0.03em;
+    color: var(--white);
+    margin-bottom: 1rem;
+    line-height: 1;
+  }
+
+  .section-body {
+    font-size: 1rem;
+    font-weight: 300;
+    line-height: 1.75;
+    color: var(--gray);
+  }
+
+  /* WHAT WE DO */
+  #what-we-do {
+    background: var(--navy-mid);
+    border-top: 1px solid rgba(255,255,255,0.06);
+  }
+
+  .what-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: center;
+    margin-top: 3rem;
+  }
+
+  .step {
+    display: flex;
+    gap: 1.4rem;
+    padding: 1.4rem 0;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+
+  .step:last-child { border-bottom: none; }
+
+  .step-num {
+    font-family: var(--font-display);
+    font-size: 2rem;
+    color: var(--red);
+    line-height: 1;
+    min-width: 2.2rem;
+    padding-top: 2px;
+  }
+
+  .step-title {
+    font-family: var(--font-condensed);
+    font-size: 0.95rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--white);
+    margin-bottom: 0.3rem;
+  }
+
+  .step-desc {
+    font-size: 0.88rem;
+    font-weight: 300;
+    color: var(--gray);
+    line-height: 1.6;
+  }
+
+  /* WHAT WE SOURCE */
+  #what-we-source {
+    background: var(--navy);
+  }
+
+  .source-intro {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: end;
+    margin-bottom: 3rem;
+  }
+
+  .compliance-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    margin-top: 1.2rem;
+  }
+
+  .tag {
+    font-family: var(--font-condensed);
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+    color: var(--gold);
+    border: 1px solid rgba(201,168,76,0.38);
+    padding: 0.3rem 0.75rem;
+  }
+
+  .products-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.06);
+  }
+
+  .product-card {
+    background: var(--navy-mid);
+    padding: 1.8rem 1.4rem;
+    position: relative;
+    transition: background 0.2s;
+  }
+
+  .product-card:hover { background: var(--navy-light); }
+
+  .product-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--red);
+    transform: scaleX(0);
+    transition: transform 0.25s;
+  }
+
+  .product-card:hover::before { transform: scaleX(1); }
+
+  .product-icon {
+    font-size: 1.6rem;
+    margin-bottom: 0.9rem;
+    display: block;
+    color: var(--gold);
+  }
+
+  .product-name {
+    font-family: var(--font-condensed);
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--white);
+    margin-bottom: 0.5rem;
+  }
+
+  .product-detail {
+    font-size: 0.82rem;
+    font-weight: 300;
+    color: var(--gray);
+    line-height: 1.55;
+  }
+
+  /* ABOUT */
+  #about {
+    background: var(--navy-mid);
+    border-top: 1px solid rgba(255,255,255,0.06);
+  }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 5rem;
+    align-items: center;
+    margin-top: 3rem;
+  }
+
+  .portrait-frame {
+    width: 100%;
+    aspect-ratio: 3/4;
+    background: var(--steel);
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(255,255,255,0.08);
+  }
+
+  .portrait-initials {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-display);
+    font-size: 7rem;
+    color: rgba(201,168,76,0.12);
+    letter-spacing: 0.05em;
+  }
+
+  .portrait-label {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    background: var(--red);
+    padding: 0.8rem 1.2rem;
+  }
+
+  .portrait-name {
+    font-family: var(--font-condensed);
+    font-size: 1.1rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--white);
+  }
+
+  .portrait-role {
+    font-family: var(--font-condensed);
+    font-size: 0.73rem;
+    font-weight: 400;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(244,242,237,0.72);
+  }
+
+  .portrait-accent {
+    position: absolute;
+    top: -8px; right: -8px;
+    width: 48px; height: 48px;
+    border-top: 4px solid var(--gold);
+    border-right: 4px solid var(--gold);
+  }
+
+  .about-portrait { position: relative; }
+
+  .about-content .section-body { margin-bottom: 0; }
+
+  .expertise-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    margin-top: 1.8rem;
+  }
+
+  .expertise-item {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    font-size: 0.9rem;
+    font-weight: 400;
+    color: var(--light-gray);
+  }
+
+  .expertise-item::before {
+    content: '';
+    display: block;
+    width: 20px;
+    height: 2px;
+    background: var(--gold);
+    flex-shrink: 0;
+  }
+
+  /* CONTACT */
+  #contact {
+    background: var(--navy);
+    border-top: 1px solid rgba(255,255,255,0.06);
+  }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    margin-top: 3rem;
+    align-items: start;
+  }
+
+  .contact-info-block {
+    display: flex;
+    flex-direction: column;
+    gap: 1.8rem;
+  }
+
+  .contact-label {
+    font-family: var(--font-condensed);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 0.3rem;
+  }
+
+  .contact-value {
+    font-size: 1rem;
+    font-weight: 400;
+    color: var(--white);
+  }
+
+  .contact-value a {
+    color: var(--gold);
+    text-decoration: none;
+  }
+
+  .contact-value a:hover { text-decoration: underline; }
+
+  .contact-note {
+    font-size: 0.84rem;
+    font-weight: 300;
+    color: var(--gray);
+    margin-top: 0.2rem;
+    line-height: 1.5;
+  }
+
+  .form-row {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    margin-bottom: 1.1rem;
+  }
+
+  .form-label {
+    font-family: var(--font-condensed);
+    font-size: 0.73rem;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--gray);
+  }
+
+  .form-input,
+  .form-textarea {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.12);
+    color: var(--white);
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    padding: 0.75rem 1rem;
+    width: 100%;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+
+  .form-input:focus,
+  .form-textarea:focus {
+    border-color: var(--gold);
+    background: rgba(255,255,255,0.07);
+  }
+
+  .form-textarea { resize: vertical; min-height: 110px; }
+
+  .btn-submit {
+    font-family: var(--font-condensed);
+    font-size: 0.9rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--navy);
+    background: var(--gold);
+    border: none;
+    padding: 0.9rem 2.2rem;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.15s;
+    clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px));
+  }
+
+  .btn-submit:hover {
+    background: var(--gold-light);
+    transform: translateY(-2px);
+  }
+
+  /* FOOTER */
+  footer {
+    background: rgba(5,12,22,0.98);
+    border-top: 1px solid rgba(255,255,255,0.06);
+    padding: 1.8rem 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+  }
+
+  .footer-logo {
+    font-family: var(--font-condensed);
+    font-size: 0.88rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+
+  .footer-copy {
+    font-size: 0.76rem;
+    color: var(--gray);
+  }
+
+  .footer-compliance {
+    font-family: var(--font-condensed);
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(201,168,76,0.45);
+  }
+
+  /* REVEAL ANIMATION */
+  .reveal {
+    opacity: 0;
+    transform: translateY(22px);
+    transition: opacity 0.65s ease, transform 0.65s ease;
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: none;
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Patriot Fuel Industrial Supply Co.</div>
+  <ul class="nav-links">
+    <li><a href="#what-we-do">What We Do</a></li>
+    <li><a href="#what-we-source">Products</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-stripe"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">Defense &amp; Government Supply</div>
+    <h1 class="hero-title">
+      PATRIOT<br>
+      <span class="accent">FUEL</span><br>
+      INDUSTRIAL
+    </h1>
+    <div class="hero-subtitle">Supply Co.</div>
+    <p class="hero-tagline">
+      <strong>Spec-Compliant. Mission-Ready. Delivered.</strong>
+      BAA-compliant fuel system components for military installations and government construction projects &mdash; procured right, documented right, on time.
+    </p>
+    <a href="#contact" class="btn-primary">Contact Us</a>
+    <div class="hero-badges">
+      <span class="badge">Buy America Act</span>
+      <span class="badge">UFGS Compliant</span>
+      <span class="badge">DoD Contractor</span>
+      <span class="badge">SAM.gov Registered</span>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT WE DO -->
+<section id="what-we-do">
+  <div class="container">
+    <div class="what-grid">
+      <div class="reveal">
+        <div class="section-label">Mission</div>
+        <h2 class="section-title">What We Do</h2>
+        <p class="section-body">
+          Patriot Fuel Industrial Supply Co. is a specialized procurement company serving military bases and government contractors in the fuel systems sector. We don't just ship parts &mdash; we source the right parts, verified against the correct specifications, so your project passes inspection and stays on schedule.
+        </p>
+        <p class="section-body" style="margin-top: 1rem;">
+          Operating under the RMMR program and similar DoD maintenance frameworks, we bridge the gap between service order and completed invoice &mdash; handling compliance verification, specification matching, and sourcing so your field crew has exactly what they need.
+        </p>
+      </div>
+      <div class="reveal">
+        <div class="step">
+          <div class="step-num">01</div>
+          <div>
+            <div class="step-title">Receive Service Order</div>
+            <div class="step-desc">We review your scope of work and identify all required fuel system components &mdash; valves, gaskets, fittings, fasteners, and more.</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">02</div>
+          <div>
+            <div class="step-title">Verify Compliance</div>
+            <div class="step-desc">Every item is cross-referenced against Buy America Act requirements and the applicable UFGS specification for your project type and installation.</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">03</div>
+          <div>
+            <div class="step-title">Procure &amp; Deliver</div>
+            <div class="step-desc">We source from qualified suppliers and ensure materials reach your crew ready to install &mdash; no guesswork, no non-compliant substitutions.</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">04</div>
+          <div>
+            <div class="step-title">Invoice Government</div>
+            <div class="step-desc">Full documentation provided so billing is clean, defensible, and audit-ready from the first submission.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT WE SOURCE -->
+<section id="what-we-source">
+  <div class="container">
+    <div class="source-intro">
+      <div class="reveal">
+        <div class="section-label">Products</div>
+        <h2 class="section-title">What We Source</h2>
+        <p class="section-body">
+          We procure a full range of fuel system components for military installation maintenance and construction. Every part we source is verified against the applicable Unified Facilities Guide Specification and Buy America Act domestic sourcing requirements.
+        </p>
+      </div>
+      <div class="reveal">
+        <p class="section-body" style="color: var(--light-gray); margin-bottom: 0;">Compliance Standards We Work To:</p>
+        <div class="compliance-tags">
+          <span class="tag">Buy America Act (BAA)</span>
+          <span class="tag">UFGS 33 52 10</span>
+          <span class="tag">UFGS 33 52 40</span>
+          <span class="tag">UFGS 33 52 80</span>
+          <span class="tag">UFGS 33 56 10</span>
+          <span class="tag">UFGS 33 57 55</span>
+          <span class="tag">UFC 3-460-01</span>
+          <span class="tag">UFM 3-460-03</span>
+          <span class="tag">SAM.gov Registered</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="products-grid reveal">
+      <div class="product-card">
+        <div class="product-icon">&#9671;</div>
+        <div class="product-name">Gaskets &amp; Seals</div>
+        <div class="product-detail">Fuel-grade gaskets, O-rings, flange seals, and compression seals specified for petroleum distribution systems on military installations.</div>
+      </div>
+      <div class="product-card">
+        <div class="product-icon">&#8853;</div>
+        <div class="product-name">Valves &amp; Actuators</div>
+        <div class="product-detail">Ball valves, gate valves, butterfly valves, check valves, and actuated control valves for fuel storage and distribution systems.</div>
+      </div>
+      <div class="product-card">
+        <div class="product-icon">&#9632;</div>
+        <div class="product-name">Bolts &amp; Fasteners</div>
+        <div class="product-detail">Domestic-manufactured bolts, nuts, studs, and hardware meeting ASTM standards and Buy America Act domestic content requirements.</div>
+      </div>
+      <div class="product-card">
+        <div class="product-icon">&#9670;</div>
+        <div class="product-name">Pipe Fittings &amp; Flanges</div>
+        <div class="product-detail">Couplings, elbows, tees, reducers, and flanges for petroleum piping systems &mdash; spec'd to UFGS and project-specific requirements.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-portrait reveal">
+        <div class="portrait-frame">
+          <div class="portrait-initials">MM</div>
+          <div class="portrait-label">
+            <div class="portrait-name">Matthew Maness</div>
+            <div class="portrait-role">Founder &amp; Principal</div>
+          </div>
+        </div>
+        <div class="portrait-accent"></div>
+      </div>
+      <div class="about-content reveal">
+        <div class="section-label">About</div>
+        <h2 class="section-title">Who We Are</h2>
+        <p class="section-body">
+          Patriot Fuel Industrial Supply Co. was founded by Matthew Maness, a government contracting professional with hands-on experience in DoD fuel system maintenance programs &mdash; including direct work under the RMMR (Repair, Maintenance, Minor Renovation) program at military installations.
+        </p>
+        <p class="section-body" style="margin-top: 1rem;">
+          Matthew knows this work from the inside. He has written scopes of work, managed subcontractor specifications, sourced compliant materials, and invoiced the government directly. That experience is the foundation of every procurement we handle &mdash; we don't source blind, we source to spec.
+        </p>
+        <p class="section-body" style="margin-top: 1rem;">
+          Based in Colorado and serving military installations and government contractors globally.
+        </p>
+        <div class="expertise-list">
+          <div class="expertise-item">RMMR Program Procurement &amp; Execution</div>
+          <div class="expertise-item">Buy America Act Compliance Verification</div>
+          <div class="expertise-item">UFGS Specification Interpretation</div>
+          <div class="expertise-item">Scope of Work Development for Subcontractors</div>
+          <div class="expertise-item">DoD Fuel System Component Supply</div>
+          <div class="expertise-item">Government Billing &amp; Documentation</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <div class="contact-grid">
+      <div class="reveal">
+        <div class="section-label">Get In Touch</div>
+        <h2 class="section-title">Contact Us</h2>
+        <p class="section-body" style="margin-bottom: 2.5rem;">
+          Ready to source BAA-compliant fuel system components for your next project? Reach out directly &mdash; we respond fast and know our specs.
+        </p>
+        <div class="contact-info-block">
+          <div>
+            <div class="contact-label">Email</div>
+            <div class="contact-value"><a href="mailto:matthewmaness@patriotfuelsupplyco.com">matthewmaness@patriotfuelsupplyco.com</a></div>
+          </div>
+          <div>
+            <div class="contact-label">Phone</div>
+            <div class="contact-value"><a href="tel:2817938194">281-793-8194</a></div>
+          </div>
+          <div>
+            <div class="contact-label">Location</div>
+            <div class="contact-value">Colorado, USA</div>
+            <div class="contact-note">Serving military installations and government contractors globally.</div>
+          </div>
+          <div>
+            <div class="contact-label">Registered</div>
+            <div class="contact-value">SAM.gov &mdash; CAGE Code Registered</div>
+            <div class="contact-note">Available for DoD contract vehicles and IDIQ procurement opportunities.</div>
+          </div>
+        </div>
+      </div>
+      <div class="reveal">
+        <form onsubmit="handleSubmit(event)">
+          <div class="form-row">
+            <label class="form-label" for="name">Full Name</label>
+            <input class="form-input" type="text" id="name" name="name" placeholder="John Smith" required>
+          </div>
+          <div class="form-row">
+            <label class="form-label" for="org">Organization / Company</label>
+            <input class="form-input" type="text" id="org" name="org" placeholder="ABC Contracting LLC">
+          </div>
+          <div class="form-row">
+            <label class="form-label" for="email">Email Address</label>
+            <input class="form-input" type="email" id="email" name="email" placeholder="you@company.com" required>
+          </div>
+          <div class="form-row">
+            <label class="form-label" for="phone">Phone</label>
+            <input class="form-input" type="tel" id="phone" name="phone" placeholder="555-555-5555">
+          </div>
+          <div class="form-row">
+            <label class="form-label" for="message">Project / Requirement</label>
+            <textarea class="form-textarea" id="message" name="message" placeholder="Describe your project, base location, and what components you need..." required></textarea>
+          </div>
+          <button type="submit" class="btn-submit">Send Message</button>
+          <div id="form-success" style="display:none; margin-top:1rem; font-size:0.88rem; color:var(--gold); font-family:var(--font-condensed); letter-spacing:0.1em; text-transform:uppercase;">
+            Message sent &mdash; we'll be in touch shortly.
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Patriot Fuel Industrial Supply Co.</div>
+  <div class="footer-copy">&copy; 2025 Patriot Fuel Industrial Supply Co. All rights reserved.</div>
+  <div class="footer-compliance">BAA Compliant &nbsp;|&nbsp; UFGS Specifications &nbsp;|&nbsp; SAM.gov Registered</div>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 80);
+      }
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    document.getElementById('form-success').style.display = 'block';
+    e.target.reset();
+  }
+</script>
+
+</body>
+</html>
